@@ -24,6 +24,8 @@ Route::get('/users', [UserController::class, 'index'])->name('users.index');
 Route::get('/test', [UserController::class, 'test']);
 
 // Calendar routes
+// Route::get('/login', [LoginController::class, 'login'])->name('login');
+
 Route::get('calendar/index', [CalendarController::class, 'index'])->name('calendar.index');
 Route::post('calendar', [CalendarController::class, 'store'])->name('calendar.store');
 Route::patch('calendar/update/{id}', [CalendarController::class, 'update'])->name('calendar.update');
@@ -36,3 +38,13 @@ Route::get('/export-db', function() {
     return "Exporting";
 });
 
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});
