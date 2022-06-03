@@ -1,74 +1,83 @@
 <x-app-layout>
     <x-slot name="header">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
+    {{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"> --}}
+    {{-- <link rel="stylesheet" href=""> --}}
+</head>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <div class="grid grid-rows-1 grid-cols-3">
-                    <div class="row-span-2 col-span-1 bg-gray-200 pt-20 space-y-5 w-2/3">
-                       <button id="btn1" class="group bg-gray-300  pt-4 pb-4  focus:bg-red-300 hover:bg-red-300 hover:text-red-700 w-11/12 rounded-r-2xl font-bold focus:outline-none ">My Transactions</button>
-                       <button id="btn2" class="group bg-gray-300  pt-4 pb-4  focus:bg-blue-300 hover:bg-blue-300 hover:text-blue-700 w-11/12 rounded-r-2xl font-bold focus:outline-none ">My Invoices</button> 
-                </div>
-                <div id="div1" class="col-span-2">
-                <div class="col-span-2">
-                    <div class="bg-gray-100 flex items-center justify-center bg-gray-100 font-sans overflow-hidden">
-                        <div class="w-full mt-20 min-h-screen lg:w-5/6">
-                            @if (Auth::check() && Auth::user()->role ==0)
-                            <a href="/add" class="bg-red-500 uppercase bg-transparent text-gray-100 text-xs font-extrabold py-3 px-6 rounded-3xl">
-                                + Add Transaction
-                                </a>
-                            @endif
-                            <div class="bg-white shadow-md rounded my-6">
-                                <table class="min-w-max w-full table-auto">
-                                    <thead>
-                                        <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
-                                            <th class="py-3 px-6 text-left">Date</th>
-                                            <th class="py-3 px-6 text-left">Journal</th>
-                                            <th class="py-3 px-6 text-center">Entitled</th>
-                                            <th class="py-3 px-6 text-center">Debit</th>
-                                            <th class="py-3 px-6 text-center">Credit</th>
-                                            <th class="py-3 px-6 text-center">Management</th>
-                                        </tr>
-                                    </thead>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                </div>
-                <div id="div2" class="col-span-2">
-                    <div  class="col-span-3 ">
-                        <div class=" bg-gray-100 flex items-center justify-center bg-gray-100 font-sans overflow-hidden">
-                            <div class="w-full lg:w-5/6 mt-20 min-h-screen ">
-                                @if (Auth::check() && Auth::user()->role ==0)
-                                <a href="/join" class="bg-blue-500 uppercase bg-transparent text-gray-100 text-xs font-extrabold py-3 px-6 rounded-3xl">
-                                    + Add Invoice
-                                    </a>
-                                    @endif
-                                <div class="bg-white shadow-md rounded my-6">
-                                    <table class="min-w-max w-full table-auto">
-                                        <thead>
-                                            <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
-                                                <th class="py-3 px-6 text-left">Date</th>
-                                                <th class="py-3 px-6 text-left">Number</th>
-                                                <th class="py-3 px-6 text-center">Customer Name</th>
-                                                <th class="py-3 px-6 text-center">Amount</th>
-                                                <th class="py-3 px-6 text-center">Statement</th>
-                                                <th class="py-3 px-6 text-center">Management</th>
-                                            </tr>
-                                        </thead>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                  </div>
+<body>
+   <nav class="navbar navbar-default no-margin">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header fixed-brand">
+         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" id="menu-toggle">
+<span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>
+</button>
+         <a class="navbar-brand" href="#"><i class="fa fa-rocket fa-4"></i> M-33</a>
+      </div>
+      <!-- navbar-header-->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+         <ul class="nav navbar-nav">
+            <li class="active">
+               <button class="navbar-toggle collapse in" data-toggle="collapse" id="menu-toggle-2"> <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>
+               </button>
+            </li>
+         </ul>
+      </div>
+      <!-- bs-example-navbar-collapse-1 -->
+   </nav>
+   <div id="wrapper">
+      <!-- Sidebar -->
+      <div id="sidebar-wrapper">
+         <ul class="sidebar-nav bg-danger w-25 nav-pills nav-stacked" id="menu">
+            <li class="active">
+               <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-dashboard fa-stack-1x "></i></span> Dashboard</a>
+               <ul class="nav-pills nav-stacked" style="list-style-type:none;">
+                  <li><a href="#">link1</a></li>
+                  <li><a href="#">link2</a></li>
+               </ul>
+            </li>
+            <li>
+               <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-flag fa-stack-1x "></i></span>Shortcut</a>
+               <ul class="nav-pills nav-stacked" style="list-style-type:none;">
+                  <li><a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-flag fa-stack-1x "></i></span>link1</a></li>
+                  <li><a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-flag fa-stack-1x "></i></span>link2</a></li>
+               </ul>
+            </li>
+            <li>
+               <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-cloud-download fa-stack-1x "></i></span>Overview</a>
+            </li>
+            <li>
+               <a href="#"> <span class="fa-stack fa-lg pull-left"><i class="fa fa-cart-plus fa-stack-1x "></i></span>Events</a>
+            </li>
+            <li>
+               <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-youtube-play fa-stack-1x "></i></span>About</a>
+            </li>
+            <li>
+               <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-wrench fa-stack-1x "></i></span>Services</a>
+            </li>
+            <li>
+               <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-server fa-stack-1x "></i></span>Contact</a>
+            </li>
+         </ul>
+      </div>
+      <!-- /#sidebar-wrapper -->
+      <!-- Page Content -->
+      <div id="page-content-wrapper">
+         <div class="container-fluid xyz">
+            <div class="row">
+               <div class="col-lg-12">
+                  <h1>Simple Admin Sidebar With Bootstrap by <a href="http://http://codepen.io/hughbalboa/">@hughbalboa</a></h1>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident laudantium nobis cum dignissimos ex inventore, velit blanditiis. Quod laborum soluta quidem culpa officia eligendi, quam, recusandae iste aliquid amet odit! </p>
+               </div>
             </div>
-        </div>
-    </div>
+         </div>
+      </div>
+      <script src="../js/app.js"></script>
+      <!-- /#page-content-wrapper -->
+   </div>
+    
 </x-app-layout>
